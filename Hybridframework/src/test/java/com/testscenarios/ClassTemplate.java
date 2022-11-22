@@ -1,13 +1,10 @@
 package com.testscenarios;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import java.util.Properties;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -20,42 +17,35 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.objectrepositories.Locators;
-import com.utilities.Commonfunctions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
-public class Fb_login extends Commonfunctions {
-	
+public class ClassTemplate {
+	WebDriver driver;
 	Locators loc = new Locators();
   @Test
   public void f() throws Exception {
 	  
 	  driver.get("https://www.facebook.com");
-
-		//To read the data from property file
-		String path=".\\src\\test\\resources\\testdata\\QA_testdata.properties";
-		FileInputStream fi= new FileInputStream(path);
-		Properties p=new Properties();
-		p.load(fi);
-		sendKeysByAnyLocator(loc.Fb_login_Email_editbox, p.getProperty("Email"));
-	  
-	  
-//	driver.findElement(loc.Fb_login_Email_editbox).sendKeys(p.getproperty("Email"));
-//  	driver.findElement(loc.Fb_login_password_editbox).sendKeys(p.getproperty("password"));
-// 	Thread.sleep(5000);
-//		driver.findElement(loc.Fb_login_login_button).click();
-		clickByAnyLocator(loc.Fb_login_login_button);
-		
+	  driver.findElement(loc.Fb_login_Email_editbox).sendKeys("swathi");
+  	driver.findElement(loc.Fb_login_password_editbox).sendKeys("chowdhary");
+  	Thread.sleep(5000);
+		driver.findElement(loc.Fb_login_login_button).click();
   }
   @AfterMethod
   public void afterMethod() throws Exception {
-	  Screenshot();
+		 Date d = new Date();
+		 DateFormat abcd = new SimpleDateFormat("ddMMYYYY_HHmmss");
+		 String timeStamp = abcd.format(d);
+		File abc = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	    FileHandler.copy(abc, new File(".\\screenshots\\test_"+timeStamp+".png"));
   }
 
   @BeforeClass
   public void beforeClass() {
-	  ChromeBrowserLaunch();	 
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();	 
   }
 
   @AfterClass

@@ -25,28 +25,30 @@ import com.utilities.Commonfunctions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
-public class Fb_login extends Commonfunctions {
+public class Jricreateaccount extends Commonfunctions{
 	
 	Locators loc = new Locators();
   @Test
   public void f() throws Exception {
 	  
-	  driver.get("https://www.facebook.com");
-
+	  driver.get("https://www.Justrechargeit.com");
+	  //driver.findElement(loc.jri_login_creataccount_hyperlink).click();
+	
+		Thread.sleep(5000);
 		//To read the data from property file
-		String path=".\\src\\test\\resources\\testdata\\QA_testdata.properties";
+		String path=".\\src\\test\\resources\\testdata\\UAT_testdata2.properties";
 		FileInputStream fi= new FileInputStream(path);
 		Properties p=new Properties();
 		p.load(fi);
-		sendKeysByAnyLocator(loc.Fb_login_Email_editbox, p.getProperty("Email"));
-	  
-	  
-//	driver.findElement(loc.Fb_login_Email_editbox).sendKeys(p.getproperty("Email"));
-//  	driver.findElement(loc.Fb_login_password_editbox).sendKeys(p.getproperty("password"));
-// 	Thread.sleep(5000);
-//		driver.findElement(loc.Fb_login_login_button).click();
-		clickByAnyLocator(loc.Fb_login_login_button);
-		
+		sendKeysByAnyLocator(loc.jri_login_name_editbox, p.getProperty("Name"));
+//	  driver.findElement(loc.jri_login_name_editbox).sendKeys(p.getProperty("Name"));
+//	  driver.findElement(loc.jri_login_mobilenum_editbox).sendKeys(p.getProperty("Mobile"));
+//	  driver.findElement(loc.jri_login_Email_editbox).sendKeys(p.getProperty("Email"));
+//  	driver.findElement(loc.jri_login_password_editbox).sendKeys(p.getProperty("password"));
+//  	Thread.sleep(5000);
+//  	driver.findElement(loc.jri_login_checkbox_editbox).click();
+//  	driver.findElement(loc. jri_login_creteaccount_button ).click();
+		clickByAnyLocator(loc.jri_login_creteaccount_button);
   }
   @AfterMethod
   public void afterMethod() throws Exception {
@@ -60,7 +62,7 @@ public class Fb_login extends Commonfunctions {
 
   @AfterClass
   public void afterClass() {
-	  driver.quit();
+	  //driver.quit();
   }
 
 }
