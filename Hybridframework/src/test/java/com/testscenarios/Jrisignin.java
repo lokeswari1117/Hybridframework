@@ -1,6 +1,6 @@
 package com.testscenarios;
 
-import java.io.File;
+
 import java.io.FileInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,7 +23,6 @@ import org.testng.annotations.Test;
 import com.objectrepositories.Locators;
 import com.utilities.Commonfunctions;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 public class Jrisignin extends Commonfunctions {
@@ -41,13 +40,13 @@ public class Jrisignin extends Commonfunctions {
 	  //driver.findElement(loc.jri_login_signin_hyperlink).click();
 	  clickByAnyLocator(loc.jri_login_signin_hyperlink);
 	  Thread.sleep(5000);
-	  sendKeysByAnyLocator(loc.jri_login_signin_Email_editbox,p.getProperty("Email"));
-	  sendKeysByAnyLocator(loc.jri_login_signin_password_editbox,p.getProperty("password"));
+	  sendKeysByAnyLocator(loc.jri_login_signin_Email_editbox,p.getProperty("Email1"));
+	  sendKeysByAnyLocator(loc.jri_login_signin_password_editbox,p.getProperty("password1"));
 	  Scanner s = new Scanner(System.in);
 	  	System.out.println("Enter the Captcha");
 	  	String Captcha = s.next();
 	  	Thread.sleep(5000);
-	  	driver.findElement(loc. jri_login_signin_captchacode_editbox).sendKeys(Captcha);
+	  	driver.findElement(loc.jri_login_signin_captchacode_editbox).sendKeys(Captcha);
 	  
 	  Thread.sleep(5000);
 //	  driver.findElement(loc.jri_login_signin_Email_editbox).sendKeys(p.getProperty("Email"));

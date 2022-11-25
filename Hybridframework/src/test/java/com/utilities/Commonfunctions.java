@@ -1,25 +1,24 @@
 package com.utilities;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Commonfunctions {
 	public WebDriver driver;
 //QA will create reusable methods(Functions)
 	public void ChromeBrowserLaunch() {
-        WebDriverManager.chromedriver().setup();
+        
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 	}
@@ -30,15 +29,19 @@ public class Commonfunctions {
 		File abc = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	    FileHandler.copy(abc, new File(".\\screenshots\\test_"+timeStamp+".png"));
   }
-	public void sendKeysByAnyLocator (By locator, String inputdata) {
+	public void sendKeysByAnyLocator (By locator, String inputdata) throws Exception {
+		WebElement element = driver.findElement(locator);
 		// Check your locator is displayed?
-		if (driver.findElement(locator).isDisplayed()) {
+		if (element.isDisplayed()) {
 			// Check your element is in enable state?
-			if (driver.findElement(locator).isEnabled()) {
+			if (element.isEnabled()) {
+				System.out.println(locator+"Given locator is enable state");
 				// Clear any existing data
-				driver.findElement(locator).clear();
+				element.clear();
+				highlightElement(element);
 				// Send the test data to Edit box
-				driver.findElement(locator).sendKeys(inputdata);
+				highlightElement(element);
+				element.sendKeys(inputdata);
 			} else {
 				System.out.println("Given locator is not enable state on DOM(Current page***");
 			}
@@ -47,13 +50,20 @@ public class Commonfunctions {
 		}
 	}
 	
+	private void highlightElement(WebElement element) throws Exception {
+		// TODO Auto-generated method stub
+		((JavascriptExecutor)driver).executeScript("arguments[0].style.border='6px groove green'",element);
+		Thread.sleep(5000);
+		((JavascriptExecutor)driver).executeScript("arguments[0].style.border=''",element);
+	}
 	public void clickByAnyLocator(By locator) {
+		WebElement element = driver.findElement(locator);
 		// Check your locator is displayed?
-		if (driver.findElement(locator).isDisplayed()) {
+		if (element.isDisplayed()) {
 			// Check your element is in enable state?
-			if (driver.findElement(locator).isEnabled()) {
+			if (element.isEnabled()) {
 				// Click on Button/radiobutton/checkbox/Link...
-				driver.findElement(locator).click();
+				element.click();
 			} else {
 				System.out.println("Given locator is not enable state on DOM(Current page***");
 			}
@@ -61,5 +71,6 @@ public class Commonfunctions {
 			System.out.println("Given locator is not displayed on DOM(Current page***");
 		}
 	}
+	
 	
 }

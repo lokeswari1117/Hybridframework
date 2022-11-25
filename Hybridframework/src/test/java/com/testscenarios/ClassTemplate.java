@@ -1,5 +1,6 @@
 package com.testscenarios;
 
+
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,7 +19,7 @@ import org.testng.annotations.Test;
 
 import com.objectrepositories.Locators;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 
 public class ClassTemplate {
@@ -44,7 +45,7 @@ public class ClassTemplate {
 
   @BeforeClass
   public void beforeClass() {
-        WebDriverManager.chromedriver().setup();
+        
         driver = new ChromeDriver();	 
   }
 

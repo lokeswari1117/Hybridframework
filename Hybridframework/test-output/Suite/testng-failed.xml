@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="chromeTest(failed)">
+    <parameter name="browsername" value="chrome"/>
+    <classes>
+      <class name="com.testscenarios.Jricreateaccount">
+        <methods>
+          <include name="afterClass"/>
+          <include name="afterMethod"/>
+          <include name="beforeClass"/>
+          <include name="f"/>
+        </methods>
+      </class> <!-- com.testscenarios.Jricreateaccount -->
+    </classes>
+  </test> <!-- chromeTest(failed) -->
+  <test thread-count="5" name="firefoxTest(failed)">
+    <parameter name="browsername" value="firefox"/>
+    <classes>
+      <class name="com.testscenarios.Jricreateaccount">
+        <methods>
+          <include name="afterClass"/>
+          <include name="afterMethod"/>
+          <include name="beforeClass"/>
+          <include name="f"/>
+        </methods>
+      </class> <!-- com.testscenarios.Jricreateaccount -->
+    </classes>
+  </test> <!-- firefoxTest(failed) -->
+</suite> <!-- Failed suite [Suite] -->
