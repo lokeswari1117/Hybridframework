@@ -3,7 +3,9 @@ package com.utilities;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -71,6 +73,36 @@ public class Commonfunctions {
 			System.out.println("Given locator is not displayed on DOM(Current page***");
 		}
 	}
+	public void windowhandling() throws Exception {
+		 
+		  System.out.println(driver.getWindowHandle());
+		  System.out.println(driver.getWindowHandles());
+		 //switch to window using tab 
+		  String ParentWindow = driver.getWindowHandle();
+		  ArrayList<String> Alltabs = new ArrayList<String>(driver.getWindowHandles());
+		  
+		  driver.switchTo().window(Alltabs.get(1));
+		//switch to window using tab and close the New tab again back to parent window
+		  driver.close();
+		  
+		//  driver.switchTo().window(Alltabs.get(0));
+		  driver.switchTo().window(ParentWindow);
+	}
+	public void popuphandling() throws Exception { 
 	
+	  System.out.println(driver.getWindowHandle());
+	  System.out.println(driver.getWindowHandles());
+	  Set<String> Allwindows = (driver.getWindowHandles());
+	  String ParentWindow = driver.getWindowHandle();
+	  for(String abc : Allwindows) {
+		  if(!ParentWindow.equals(abc)) {
+			  driver.switchTo().window(abc);
+			  driver.close();
+			  }
+	  }
+	  
+	  driver.switchTo().window(ParentWindow);
+	 }
+	}
 	
-}
+
