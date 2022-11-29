@@ -29,4 +29,6 @@ public class Locators {
 	//Assignment18
 	public final By demoqa_newtab_button=By.id("tabButton");
 	public final By demoqa_newwindow_button=By.xpath("//*[@id='windowButton']");
+	//TTD Website
+	public final By TTDWebsite_country_dropdown=By.name("countryS");
 }

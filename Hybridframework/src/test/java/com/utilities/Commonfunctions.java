@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -15,6 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.Select;
 
 public class Commonfunctions {
 	public WebDriver driver;
@@ -103,6 +105,98 @@ public class Commonfunctions {
 	  
 	  driver.switchTo().window(ParentWindow);
 	 }
+	public void Selectbyvisibletext(By locator, String visibletext) {
+		WebElement element=driver.findElement(locator);
+		if(element.isDisplayed()) {
+			if(element.isEnabled()) {
+	Select dropdown=new Select(element);
+			dropdown.selectByVisibleText(visibletext);
+			}
+			else {
+				System.out.println("WebElement is not enabled");
+			}
+		}
+			else {
+				System.out.println("WebElement is not displayed");
+			}
+		
 	}
+	public void SelectbyIndex(By locator, int index) {
+		WebElement element=driver.findElement(locator);
+		if(element.isDisplayed()) {
+			if(element.isEnabled()) {
+	Select dropdown=new Select(element);
+			dropdown.selectByIndex(index);
+			}
+			else {
+				System.out.println("WebElement is not enabled");
+			}
+		}
+			else {
+				System.out.println("WebElement is not displayed");
+			}
+		
+	}
+	public void Selectbyvalue(By locator, int value) {
+		WebElement element=driver.findElement(locator);
+		if(element.isDisplayed()) {
+			if(element.isEnabled()) {
+	Select dropdown=new Select(element);
+			dropdown.selectByIndex(value);
+			}
+			else {
+				System.out.println("WebElement is not enabled");
+			}
+		}
+			else {
+				System.out.println("WebElement is not displayed");
+			}
+		
+	}
+	public void Printalldropdownvalues(By locator, int value) {
+		WebElement element=driver.findElement(locator);
+		if(element.isDisplayed()) {
+			if(element.isEnabled()) {
+	Select dropdown=new Select(element);
+			List<WebElement> dropdownvalues = dropdown.getOptions();
+			System.out.println(dropdownvalues.size());
+			for(WebElement xyz:dropdownvalues) {
+			System.out.println(xyz.getText());
+			}
+			}
+			else {
+				System.out.println("WebElement is not enabled");
+			}
+		}
+			else {
+				System.out.println("WebElement is not displayed");
+			}
+		
+	}
+	public void Selectcustomiseoptionfromdropdownvalues(By locator, String visibletext) {
+		WebElement element=driver.findElement(locator);
+		if(element.isDisplayed()) {
+			if(element.isEnabled()) {
+	Select dropdown=new Select(element);
+			List<WebElement> dropdownvalues = dropdown.getOptions();
+			System.out.println(dropdownvalues.size());
+			for(int i=0;i<dropdownvalues.size();i++) {
+			System.out.println(dropdownvalues.get(i).getText());
+			if(dropdownvalues.get(i).getText().equals(visibletext)) {
+				dropdown.selectByIndex(i);
+				break;
+			}
+			}
+			}
+			else {
+				System.out.println("WebElement is not enabled");
+			}
+		}
+			else {
+				System.out.println("WebElement is not displayed");
+			}
+		}
+}
 	
+
 
