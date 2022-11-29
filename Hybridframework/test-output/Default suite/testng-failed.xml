@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testscenarios.SwitchtToandClosewindowhandling">
+      <class name="com.testscenarios.TTDwebsite">
         <methods>
-          <include name="f"/>
           <include name="beforeClass"/>
-          <include name="afterMethod"/>
+          <include name="f"/>
         </methods>
-      </class> <!-- com.testscenarios.SwitchtToandClosewindowhandling -->
+      </class> <!-- com.testscenarios.TTDwebsite -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
