@@ -196,6 +196,47 @@ public class Commonfunctions {
 				System.out.println("WebElement is not displayed");
 			}
 		}
+
+	/******************** Frames Handling *******************/
+
+	public int iframeCount() {
+		driver.switchTo().defaultContent();
+		// js = ((JavascriptExecutor) driver);
+		int numberOfFrames = Integer
+				.parseInt(((JavascriptExecutor) driver).executeScript("return window.length").toString());
+		System.out.println("Number of iframes on the page are: " + numberOfFrames);
+		return numberOfFrames;
+	}
+
+	public void switchToFrameByInt(int i) {
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame(i);
+	}
+
+	public int loopAllFramesForElement(By locator) {
+
+		int elementpresenceCount = 0;
+		int loop = 0;
+		int maxFramecount = iframeCount();// 3
+		
+		// if given locater has present on webpage, then the element size would be '1' else '0'
+		elementpresenceCount = driver.findElements(locator).size();// 0
+		while (elementpresenceCount == 0 && loop < maxFramecount) {
+			try {
+				switchToFrameByInt(loop);
+				elementpresenceCount = driver.findElements(locator).size();// 1
+				System.out.println("Try LoopAllframesAndReturnWebEL : " + loop + "; ElementpresenceCount: "
+						+ elementpresenceCount);
+				if (elementpresenceCount > 0 || loop > maxFramecount) {
+					break;
+				}
+			} catch (Exception ex) {
+				System.out.println("Catch LoopAllframesAndReturnWebEL Old: " + loop + "; " + ex);
+			}
+			loop++;// 1
+		}
+		return elementpresenceCount;
+	}
 }
 	
 

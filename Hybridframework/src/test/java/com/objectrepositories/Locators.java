@@ -26,9 +26,13 @@ public class Locators {
 	public final By greenmountain_cancel_botton = By.id("cancel");
 	//Popuphandling
 	public final By justrechargeitsignin_facebooksignin_button=By.xpath("//*[@id=\"signinpanel\"]/tbody/tr/td[3]/table/tbody/tr[2]/td/a/img");
-	//Assignment18
+	//Assignment22
 	public final By demoqa_newtab_button=By.id("tabButton");
 	public final By demoqa_newwindow_button=By.xpath("//*[@id='windowButton']");
 	//TTD Website
 	public final By TTDWebsite_country_dropdown=By.name("countryS");
+	//Assignment23
+	public final By Toyota_cookie_yesagreebutton=By.id("onetrust-accept-btn-handler");
+	public final By Toyota_cookie2_yesagreebutton=By.xpath("/html/body/div[7]/div[2]/div/div/div[2]/div/div/button");
+	public final By Toyota_page_radiobutton=By.xpath("/html/body/div[1]/section/div/div[1]/div/form/div[1]/div/ul/li[2]/a/div");
 }

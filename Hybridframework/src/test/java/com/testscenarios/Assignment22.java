@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.objectrepositories.Locators;
 import com.utilities.Commonfunctions;
 
-public class Assignment18 extends Commonfunctions {
+public class Assignment22 extends Commonfunctions {
 	Locators loc = new Locators();
 	@BeforeClass
 	  public void beforeClass() {
